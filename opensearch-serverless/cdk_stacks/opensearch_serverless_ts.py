@@ -127,6 +127,10 @@ class OpsServerlessTimeSeriesStack(Stack):
 
     self.collection_endpoint = cfn_collection.attr_collection_endpoint
 
-    cdk.CfnOutput(self, f'{self.stack_name}-Endpoint', value=cfn_collection.attr_collection_endpoint)
-    cdk.CfnOutput(self, f'{self.stack_name}-DashboardsURL', value=cfn_collection.attr_dashboard_endpoint)
+    cdk.CfnOutput(self, 'Endpoint',
+      value=cfn_collection.attr_collection_endpoint,
+      export_name=f'{self.stack_name}-Endpoint')
+    cdk.CfnOutput(self, 'DashboardsURL',
+      value=cfn_collection.attr_dashboard_endpoint,
+      export_name=f'{self.stack_name}-DashboardsURL')
 

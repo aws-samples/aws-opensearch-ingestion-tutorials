@@ -51,8 +51,17 @@ At this point you can now synthesize the CloudFormation template for this code.
 (.venv) $ cdk synth -c iam_user_name=<i>your-iam-user-name</i> --all
 </pre>
 
-:warning: Amazon OpenSearch Serverless requires mandatory IAM permission for access to resources.
-You are required to add these two IAM permissions for your OpenSearch Serverless **"aoss:APIAccessAll"** for Data Plane API access, and **"aoss:DashboardsAccessAll"** for Dashboards access. Failure to add the two new IAM permissions will result in 403 errors starting on May 10th, 2023
+:warning: Amazon OpenSearch Serverless requires mandatory IAM permission for access to resources.<br/>
+You are required to add these two IAM permissions for your OpenSearch Serverless to your IAM User.
+
+- **"aoss:APIAccessAll"** for Data Plane API access
+- **"aoss:DashboardsAccessAll"** for Dashboards access.
+
+For example,
+![](./assets/iam_user_attached_policy_to_access_opensearch_serverless.png)
+
+Failure to add the two new IAM permissions will result in 403 errors starting on May 10th, 2023.
+
 
 For a sample data-plane policy [here](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/security-iam-serverless.html#security_iam_id-based-policy-examples-data-plane.html):
 

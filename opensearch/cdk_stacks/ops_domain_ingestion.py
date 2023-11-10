@@ -59,4 +59,6 @@ log-pipeline:
       )
     )
 
-    cdk.CfnOutput(self, f'{self.stack_name}-PipelineName', value=cfn_pipeline.pipeline_name)
+    cdk.CfnOutput(self, 'PipelineName',
+      value=cfn_pipeline.pipeline_name,
+      export_name=f'{self.stack_name}-PipelineName')

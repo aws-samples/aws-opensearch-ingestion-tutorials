@@ -31,5 +31,9 @@ class OpsCollectionPipelineRoleStack(Stack):
     )
     self.iam_role = pipeline_role
 
-    cdk.CfnOutput(self, f'{self.stack_name}_Role', value=self.iam_role.role_name)
-    cdk.CfnOutput(self, f'{self.stack_name}_RoleArn', value=self.iam_role.role_arn)
+    cdk.CfnOutput(self, 'RoleName',
+      value=self.iam_role.role_name,
+      export_name=f'{self.stack_name}-RoleName')
+    cdk.CfnOutput(self, 'RoleArn',
+      value=self.iam_role.role_arn,
+      export_name=f'{self.stack_name}-RoleArn')
